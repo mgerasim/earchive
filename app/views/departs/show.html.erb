@@ -1,0 +1,10 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Наименование:</b>
+  <%= @depart.name %>
+</p>
+
+
+<%= link_to 'Редактировать', edit_depart_path(@depart) %> |
+<%= link_to 'Назад', departs_path %>

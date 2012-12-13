@@ -1,0 +1,32 @@
+<% if @documents.count>0 %>
+
+    <h1>
+	Количество абонентов: 
+	<%= "#{@documents.count}"  %> <br/>
+	Количество листов:
+	<%= "#{@page_count}" %>
+    </h1>
+    
+    <%= button_to 'Экспорт в Excel', url_for(:format => 'xls', :query => @uri_params.to_query), :method => :post%>
+
+    <table class="pretty">
+	<tr>
+	    <th>Лицевой счет		</th>
+	    <th>ФИО абонента		</th>
+	    <th>Коробка			</th>
+	    <th>Кол-во листов		</th>
+	</tr>
+
+    <% @documents.each do |document| %>
+	<tr>
+	    <td><%= document[0] %></td>
+	    <td><%=  Document.find(:all, :conditions => ['account = ?', document[0]]).first.abonent_name %>
+	    <td><%=  Document.find(:all, :conditions => ['account = ?', document[0]]).first.korobka.to_i %>
+	    <td><%=  Document.sum(:page_count, :conditions => ['account = ?', document[0]]) %>	    </td>
+	</tr>
+    <% end %>
+    </table>
+
+<% else %>
+    <h1>Запрос не дал результатов</h1>
+<% end %>

@@ -1,0 +1,36 @@
+<% if @Documents.count>0 %>
+
+    <h1>
+	Количество документов: <%= @Documents.count %>
+    </h1>
+
+    <%= will_paginate @Documents %>    
+    
+    <% @Documents.each do |document| %>
+	
+	<%= form_tag :action => :update, :method => :get, :remote => true do %>
+		
+		<label>Тип документа:</label>
+		<%= text_field_tag document.doctype %>
+		<%= select_tag(:doctype, options_for_select(Doctype.all.collect{ |u| [u.name, u.id] }), document.doctype)%>
+    		<%= submit_tag "Сохранить", :action => :update %>
+	
+	<div id="toggleText" style="display: none" >
+		<%= render(:partial => "attr_search", :locals => {:values => @uri_params} ) %>
+	</div>
+	
+	<p>
+	    
+	</p>
+    <% end %>	
+
+	
+	<%= document.doctype %>
+
+    <% end %>
+    
+    <%= will_paginate @Documents %>
+
+<% else %>
+    <h1>Запрос не дал результатов</h1>
+<% end %>

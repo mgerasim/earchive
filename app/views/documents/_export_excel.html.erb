@@ -1,0 +1,30 @@
+    <%= form_tag root_path, :method => :get, :format=>'xls' do %>
+	  <table width="950px" >
+	    <tr>
+    		<td width="5%">
+    		    <label>Лицевой счет:   </label>
+		    <%= text_field_tag :acc, @acc %>
+    		</td>
+    		
+    		<td width="5%">
+    		    <label>Телефон:   </label>
+		    <%= text_field_tag :tel, @tel %>
+    		</td>
+    		    
+    		<td width="30%">
+			
+			<a id="displayText"  href="javascript:toggle();">Показать дополнительные параметры</a> 
+    		</td
+    		
+    		<td width="40%">
+    		</td
+    		
+	  </tr>
+	</table>   
+	
+		<%= render(:partial => "attr_search", :locals => {:values => @HashValue} ) %>
+	
+	<p>
+	    <%= submit_tag "Excel" %>
+	</p>
+    <% end %>	

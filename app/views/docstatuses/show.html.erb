@@ -1,0 +1,10 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Наименование:</b>
+  <%= @docstatus.name %>
+</p>
+
+
+<%= link_to 'Редактировать', edit_docstatus_path(@docstatus) %> |
+<%= link_to 'Назад', docstatuses_path %>

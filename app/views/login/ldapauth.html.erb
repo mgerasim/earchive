@@ -1,0 +1,23 @@
+<div>
+	<fieldset>
+		<legend>Зарегистрируйтесь, пожалуйста</legend>
+		<%= form_tag do %>
+
+			<p>
+				<label for="ldap_account">Учетная запись:</label><br>
+				<%= 
+				    select_tag "ldap_account", option_groups_from_collection_for_select(Depart.all, "users.find(:all, :conditions => \"is_not_ad = 'N'\")", :name, :ldap_account, :logonname )
+				%>
+			</p>
+			<p>
+				<label for="password">Пароль:</label><br>
+				<%= password_field_tag :password, params[:password]%>
+			</p>
+			
+			<p>
+				<%= submit_tag "Вход"  %>
+			</p>
+			
+		<% end %>
+	</fieldset>
+</div>

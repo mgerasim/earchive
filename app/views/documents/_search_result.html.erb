@@ -1,0 +1,52 @@
+<% if @Documents.count>0 %>
+
+    <h1>
+	Количество документов: <%= @Documents.count %>
+    </h1>
+
+    <%= button_to 'Экспорт в Excel', url_for(:format => 'xls', :query => @uri_params.to_query), :method => :post%>
+    <%= button_to 'Группировать в абонентские дела', url_for(:action => :abongroup, :query => @uri_params.to_query), :method => :post%>
+    <%= button_to 'Выгрузить все одним файлом', url_for(:format => 'zip', :query => @uri_params.to_query), :method => :post%>
+    
+    <%= hidden_field_tag :direction, params[:direction] %>
+    <%= hidden_field_tag :sort, params[:sort] %>
+    
+    <%= will_paginate @Documents %>    
+    
+    <table id="docs" class="pretty">
+	<tr>
+	    <th><%= sortable "account" %></th>
+	    <th><%= sortable "phone" %>	</th>
+	    <th><%= sortable "abonent_name" %></th>
+	    <th><%= sortable "created_at" %></th>
+	    <th><%= sortable "korobka" %>	</th>
+	    <th><%= sortable "doctype" %>	</th>
+	    <th><%= sortable "source" %></th>
+	    <th>Аттрибуты		</th>
+	    <% if @uri_params["edited_on"] %>
+		<th>Действие	</th>
+	    <% end %>
+	</tr>
+
+    <% @Documents.each do |document| %>
+	<tr>
+	    <td><%= document.account %></td>
+	    <td><%= document.phone %></td>
+	    <td><%= document.abonent_name %></td>
+	    <td><%= document.created_at %></td>
+	    <td><%= document.korobka.to_i %></td>
+	    <td><%= document.doctype %></td>
+	    <td><%= link_to File.basename(document.source), {:action => 'preview', :id => document},  :target => "_blank" %></td>
+	    <td><%= link_to 'Просмотр', {:action => 'show', :id => document }, :target => "_blank"  %></td>
+	    <% if @uri_params["edited_on"] %>
+		    <td><%= link_to 'Редактировать', {:controller => 'docs', :action => 'edit', :id => document, :query => @uri_params.to_query } %></td>
+	    <% end %>
+	</tr>
+    <% end %>
+    </table>
+    
+    <%= will_paginate @Documents %>
+
+<% else %>
+    <h1>Запрос не дал результатов</h1>
+<% end %>

@@ -1,0 +1,16 @@
+<div id="navmain" class="span-24 last nav">
+    <%  if session[:user_id] %>
+    <%= link_to "Поиск документа", 	root_path %> |
+    <%= link_to "Поиск абонента",	abonents_path %> |
+    <% if Person.find(session[:user_id]).role != "Пользователь" %>
+    <%= link_to "Тип документа", 	doctypes_path %> |
+    <%= link_to "Аттрибут документа", 	attributes_path %> |
+    <%= link_to "Cтатус документа", 	docstatuses_path %> |
+    <%= link_to "Пользователи", 	users_path %> | 
+    <%= link_to "Работники",		workers_path %> |
+    <%= link_to "Филиалы",		departs_path %> |
+    <% end %>
+    <%= link_to "Выход", 		logout_path %> 
+    <% end %>    
+</div>
+<hr>

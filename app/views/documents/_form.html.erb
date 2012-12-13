@@ -1,0 +1,27 @@
+<%= form_for(@document) do |f| %>
+  <% if @document.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@document.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @document.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    
+    
+      <%= f.file_field :pdf_file %>
+        
+    
+        
+    
+    <br /><br />
+  </div>
+  <div class="actions">
+    <%= f.submit 'OK' %>
+  </div>
+<% end %>

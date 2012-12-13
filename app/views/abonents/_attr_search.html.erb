@@ -1,0 +1,18 @@
+<table>
+    <tr>
+	<td><%= Abonent.human_attribute_name(:created_at) %>: </td>
+	<td> c <%= text_field_tag :abonent_created_at_bgn, @uri_params[:abonent_created_at_bgn], :class => "tcal" %> по <%= text_field_tag :abonent_created_at_end, @uri_params[:abonent_created_at_end], :class => "tcal" %></td>
+    </tr>
+    
+    <tr>
+	<td><%= Abonent.human_attribute_name(:updated_at) %>: </td>
+	<td> c <%= text_field_tag :abonent_updated_at_bgn, @uri_params[:abonent_updated_at_bgn], :class => "tcal" %> по <%= text_field_tag :abonent_updated_at_end, @uri_params[:abonent_updated_at_end], :class => "tcal" %></td>
+    </tr>
+    
+    <tr>
+	<td><%= Document.human_attribute_name(:korobka) %>:</td>
+	<td><%= number_field_tag :abonent_korobka, @uri_params[:abonent_korobka] %></td>
+    </tr>
+</table>
+<br />
+

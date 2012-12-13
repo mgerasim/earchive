@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Логин:</b>
+  <%= @worker.nickname %>
+</p>
+
+<p>
+  <b>Филиал:</b>
+  <%= @worker.depart.name %>
+</p>
+
+
+<%= link_to 'Редактировать', edit_worker_path(@worker) %> |
+<%= link_to 'Назад', workers_path %>

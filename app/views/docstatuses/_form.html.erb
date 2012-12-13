@@ -1,0 +1,21 @@
+<%= form_for(@docstatus) do |f| %>
+  <% if @docstatus.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@docstatus.errors.count, "error") %> prohibited this docstatus from being saved:</h2>
+
+      <ul>
+      <% @docstatus.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label 'Наименование:' %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="actions">
+    <%= f.submit 'Сохранить' %>
+  </div>
+<% end %>

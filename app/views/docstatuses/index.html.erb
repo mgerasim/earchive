@@ -1,0 +1,23 @@
+<h1>Список статусов документа</h1>
+
+<table>
+  <tr>
+    <th>Наименование</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @docstatuses.each do |docstatus| %>
+  <tr>
+    <td><%= docstatus.name %></td>
+    <td><%= link_to 'Показать', docstatus %></td>
+    <td><%= link_to 'Редактировать', edit_docstatus_path(docstatus) %></td>
+    <td><%= link_to 'Удалить', docstatus, confirm: 'Вы уверены?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Новый статус документа', new_docstatus_path %>

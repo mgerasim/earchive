@@ -1,0 +1,27 @@
+<h1>Список аттрибутов документа</h1>
+
+<table>
+  <tr>
+    <th>Наименование</th>
+    <th>Короткое наименование</th>
+    <th>Тип</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @attributes.each do |attribute| %>
+  <tr>
+    <td><%= attribute.name %></td>
+    <td><%= attribute.short_name %></td>
+    <td><%= attribute.attr_type %></td>
+    <td><%= link_to 'Просмотр', attribute %></td>
+    <td><%= link_to 'Редактировать', edit_attribute_path(attribute) %></td>
+    <td><%= link_to 'Удалить', attribute, confirm: 'Вы уверены?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Новый аттрибут', new_attribute_path %>

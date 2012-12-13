@@ -1,0 +1,35 @@
+<%= form_for(@user) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label 'Логин:' %><br />
+    <%= f.text_field :nickname %><br />
+    <%= f.label 'Фамилия:' %><br />
+    <%= f.text_field :lastname %><br />
+    <%= f.label 'Имя:' %><br />
+    <%= f.text_field :firstname %><br />
+    <%= f.label 'Отчество:' %><br />
+    <%= f.text_field :secondname %><br />
+    <%= f.label 'Филиал:' %><br />
+    <%= f.collection_select :depart_id, Depart.all, :id, :name %><br />
+    <%= f.label 'Роль:' %><br />
+    <%= f.collection_select :role, User::ROLES, :to_s, :humanize %><br />
+    <%= f.label 'Пользователь действующий:' %>
+    <%= f.check_box :is_valid %> <br />
+
+    <br /><br />
+  </div>
+  <div class="actions">
+    <%= f.submit 'Сохранить' %>
+  </div>
+<% end %>

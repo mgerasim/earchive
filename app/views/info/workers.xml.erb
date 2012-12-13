@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<answer>
+<earchive gettable="users" rows="<%= @users.count%>">
+<% @users.each do |user| %>
+  <row ldap_account="<%= user.nickname%>" lastname="<%= user.lastname %>" firstname="<%= user.firstname %>" secondname="<%= user.secondname %>" />
+<% end %>
+</earchive>
+
+
+
+</answer>

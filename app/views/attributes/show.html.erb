@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Наименование:</b>
+  <%= @attribute.name %>
+</p>
+
+<p>
+  <b>Короткое наименование:</b>
+  <%= @attribute.short_name %>
+</p>
+
+<p>
+  <b>Тип:</b>
+  <%= @attribute.attr_type %>
+</p>
+
+<%= link_to 'Редактировать', edit_attribute_path(@attribute) %> |
+<%= link_to 'Назад', attributes_path %>

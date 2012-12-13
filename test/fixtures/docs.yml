@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  source: MyString
+  doc_type_id: 1
+  doc_status_id: 1
+  account: MyString
+  phone: MyString
+
+two:
+  source: MyString
+  doc_type_id: 1
+  doc_status_id: 1
+  account: MyString
+  phone: MyString

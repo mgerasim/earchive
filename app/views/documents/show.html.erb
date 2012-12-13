@@ -1,0 +1,20 @@
+<table class="pretty attr">
+    <tr>
+	<th>Атрибут</th>
+	<th>Значение</th>
+    </tr>
+<% Attribute.all.each do |attribute| %>
+       <tr>
+	    <td><%= attribute.name %></td>
+	    <% docattr = @document.docattrs.find(:first, :conditions => ['attribute_id = ?', attribute.id]) %>
+	    <% if docattr != nil %>
+		<td> <%= docattr.attribute_value %></td>
+	    <% else %>
+		<td> не задан </td>
+	    <% end %>
+	</tr>
+<% end %>
+</table>
+	
+
+<%= link_to "Назад", :action => 'index', :show => 1 %> 

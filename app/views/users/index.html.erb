@@ -1,0 +1,31 @@
+<h1>Список пользователей</h1>
+
+<table>
+  <tr>
+    <th>Логин</th>
+    <th>Фамилия</th>
+    <th>Имя</th>
+    <th>Отчество</th>
+    <th>Филиал</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @users.each do |user| %>
+  <tr>
+    <td><%= user.nickname %></td>
+    <td><%= user.lastname %></td>
+    <td><%= user.firstname %></td>
+    <td><%= user.secondname %></td>
+    <td><%= user.depart.name %></td>
+    <td><%= link_to 'Показать', user %></td>
+    <td><%= link_to 'Редактировать', edit_user_path(user) %></td>
+    <td><%= link_to 'Удалить', user, confirm: 'Вы уверены?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Новый пользователь', new_user_path %>

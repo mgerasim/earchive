@@ -1,0 +1,23 @@
+<h1>Список филиалов</h1>
+
+<table>
+  <tr>
+    <th>Наименование</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @departs.each do |depart| %>
+  <tr>
+    <td><%= depart.name %></td>
+    <td><%= link_to 'Показать', depart %></td>
+    <td><%= link_to 'Редактировать', edit_depart_path(depart) %></td>
+    <td><%= link_to 'Удалить', depart, confirm: 'Вы уверены?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Новый филиал', new_depart_path %>

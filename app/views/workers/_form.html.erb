@@ -1,0 +1,29 @@
+<%= form_for(@worker) do |f| %>
+  <% if @worker.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@worker.errors.count, "error") %> prohibited this worker from being saved:</h2>
+
+      <ul>
+      <% @worker.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <%= f.label 'Логин:' %><br />
+    <%= f.text_field :nickname %><br />
+
+    <%= f.label 'Филиал:' %><br />
+    <%= f.collection_select :depart_id, Depart.all, :id, :name %><br />
+
+  
+    <%= f.label 'Пароль' %><br />
+    <%= f.password_field :password %> <br />
+    <%= f.label 'Подтверждение пароля:' %><br />
+    <%= f.password_field :password_confirmation %><br />
+
+ <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,26 @@
+<div class="document">
+
+    <table>
+	<tr>
+	    <th>Лицевой счет		</th>
+	    <th>Телефон			</th>
+	    <th>ФИО абонента		</th>
+	    <th>Дата сканирования	</th>
+	    <th>Номер коробки		</th>
+	    <th>Файл			</th>
+	    <th>Аттрибуты		</th>
+	</tr>
+
+	<tr>
+	    <td><%= document.account %></td>
+	    <td><%= document.phone %></td>
+	    <td><%= document.abonent_name %></td>
+	    <td><%= document.scan_date %></td>
+	    <td><%= document.korobka %></td>
+	    <td><%= link_to File.basename(document.source), {:action => 'showdoc', :id => document},  :target => "_blank" %></td>
+	    <td><%= link_to 'Просмотр', {:action => 'show', :id => document }, :target => "_blank"  %></td>
+	</tr>
+	
+    </table>
+    
+</div>

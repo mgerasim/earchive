@@ -1,0 +1,10 @@
+---
+port: '8000'
+
+servers: 2
+pid_file: /tmp/pids/mongrel.pid
+log_file: /var/log/mongrel/mongrel.log
+address: 127.0.0.1
+environment: production
+cwd: /u/apps/earchive
+docroot: /u/apps/earchive/current/public

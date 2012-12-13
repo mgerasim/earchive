@@ -1,0 +1,12 @@
+<table>
+    <tr>
+	<td><%= Document.human_attribute_name(:created_at) %>: </td>
+	<td> c <%= text_field_tag :created_at_bgn, @uri_params[:created_at_bgn], :class => "tcal" %> по <%= text_field_tag :created_at_end, @uri_params[:created_at_end], :class => "tcal" %></td>
+    </tr>
+    <tr>
+	<td><%= Document.human_attribute_name(:korobka) %>:</td>
+	<td><%= number_field_tag :korobka, @uri_params[:korobka] %></td>
+    </tr>
+</table>
+<br />
+

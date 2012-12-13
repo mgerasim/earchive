@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Наименование:</b>
+  <%= @doctype.name %>
+</p>
+
+<p>
+  <b>Короткое наименование:</b>
+  <%= @doctype.short_name %>
+</p>
+
+
+<%= link_to 'Редактировать', edit_doctype_path(@doctype) %> |
+<%= link_to 'Назад', doctypes_path %>

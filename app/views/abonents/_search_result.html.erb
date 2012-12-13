@@ -1,0 +1,36 @@
+<% if @Abonents.count>0 %>
+
+    <h1>
+	Количество абонентов: <%= @Abonents.count %>
+    </h1>
+
+    <%= button_to 'Экспорт в Excel', url_for(:format => 'xls', :query => @uri_params.to_query), :method => :post%>
+    
+    <%= hidden_field_tag :direction, params[:direction] %>
+    <%= hidden_field_tag :sort, params[:sort] %>
+    
+    <%= will_paginate @Abonents %> 
+    
+    <table id="docs" class="pretty">
+	<tr>
+	    <th><%= sortable "account" %></th>
+	    <th><%= sortable "abonent_name" %></th>
+	    <th><%= sortable "korobka" %>	</th>
+	    <th><%= sortable "page_count" %>	</th>
+	</tr>
+
+    <% @Abonents.each do |abonent| %>
+	<tr>
+	    <td><%= abonent.account %></td>
+	    <td><%= abonent.abonent_name %></td>
+	    <td><%= abonent.korobka.to_i %></td>
+	    <td><%= abonent.page_count.to_i %></td>
+	</tr>
+    <% end %>
+    </table>
+    
+    <%= will_paginate @Abonents %>
+
+<% else %>
+    <h1>Запрос не дал результатов</h1>
+<% end %>
